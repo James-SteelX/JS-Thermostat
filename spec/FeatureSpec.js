@@ -24,9 +24,11 @@ describe("Feature Test: ", function() {
 
     it("has a minimum temperature of 10 degrees", function(){
       expect(thermostat._minimumTemperature).toBe(10)
-
     });
 
+    it("has a maximum temperature of 25 degrees when powersaving is on", function() {
+      expect(thermostat.maximumTemperature()).toBe(25)
+    });
   });
 
 });
