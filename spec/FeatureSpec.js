@@ -30,6 +30,10 @@ describe("Feature Test: ", function() {
       expect(thermostat.maximumTemperature()).toBe(25)
     });
 
+    it("Powersaving is set to on by default", function() {
+      expect(thermostat._powerSaving).toBe(true)
+    });
+
     it("Powersaving can be switched off", function(){
       thermostat.turnOffPowerSaving()
       expect(thermostat._powerSaving).toBe(false)
@@ -40,10 +44,15 @@ describe("Feature Test: ", function() {
       expect(thermostat._powerSaving).toBe(true)
     });
 
-
-    it("has a maximum temperature of 32 degrees wehn powersaving mode is on", function() {
+    it("has a maximum temperature of 32 degrees when powersaving mode is on", function() {
       thermostat.turnOffPowerSaving()
       expect(thermostat.maximumTemperature()).toBe(32)
+    });
+
+    it("can be reset to 20 degrees with the reset button", function() {
+      thermostat.increaseTemperature()
+      thermostat.resetTemperature()
+      expect(thermostat.currentTemperature()).toBe(20)
     });
   });
 
