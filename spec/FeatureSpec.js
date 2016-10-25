@@ -18,9 +18,15 @@ describe("Feature Test: ", function() {
        expect(thermostat.increaseTemperature()).toBe(21)
      });
 
-     it("decrease the temperature with the down button", function() {
+    it("decrease the temperature with the down button", function() {
        expect(thermostat.decreaseTemperature()).toBe(19)
-     });
+    });
+
+    it("has a minimum temperature of 10 degrees", function(){
+      expect(thermostat._minimumTemperature).toBe(10)
+
+    });
+
   });
 
 });
