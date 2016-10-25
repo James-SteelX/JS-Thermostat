@@ -14,6 +14,10 @@ describe("Feature Test: ", function() {
       expect(thermostat.currentTemperature()).toBe(20)
     });
 
+    it("increase the temperature with the up button", function() {
+       expect(thermostat.increaseTemperature()).toBe(21)
+     });
+
   });
 
 });
