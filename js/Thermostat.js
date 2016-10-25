@@ -14,14 +14,14 @@ Thermostat.prototype.increaseTemperature = function () {
   if(this.temperature >= this.maximumTemperature()) {
     throw new Error("Maximum temperature reached");
   }
-  return this.temperature + 1;
+  return this.temperature += 1;
 };
 
 Thermostat.prototype.decreaseTemperature = function () {
   if(this.temperature <= this.minimumTemperature) {
     throw new Error("Minimum temperature reached");
   }
-  return this.temperature -1;
+  return this.temperature -= 1;
 };
 
 Thermostat.prototype.maximumTemperature = function () {
