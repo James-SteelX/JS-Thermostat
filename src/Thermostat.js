@@ -1,27 +1,27 @@
 'use strict';
 
 function Thermostat() {
-  this._temperature = 20;
-  this._minimumTemperature = 10;
+  this.temperature = 20;
+  this.minimumTemperature = 10;
   this._powerSaving = true;
 }
 
-Thermostat.prototype.currentTemperature = function () {
-  return this._temperature;
+Thermostat.prototype._currentTemperature = function () {
+  return this.temperature;
 };
 
 Thermostat.prototype.increaseTemperature = function () {
-  if(this._temperature >= this.maximumTemperature()) {
+  if(this.temperature >= this.maximumTemperature()) {
     throw new Error("Maximum temperature reached");
   }
-  return this._temperature + 1;
+  return this.temperature + 1;
 };
 
 Thermostat.prototype.decreaseTemperature = function () {
-  if(this._temperature <= this._minimumTemperature) {
+  if(this.temperature <= this.minimumTemperature) {
     throw new Error("Minimum temperature reached");
   }
-  return this._temperature -1;
+  return this.temperature -1;
 };
 
 Thermostat.prototype.maximumTemperature = function () {
@@ -40,14 +40,14 @@ Thermostat.prototype.turnOnPowerSaving = function () {
 };
 
 Thermostat.prototype.resetTemperature = function () {
-  this._temperature = 20;
+  this.temperature = 20;
 };
 
 Thermostat.prototype.displayColour = function () {
-  if(this._temperature > 25) {
+  if(this.temperature > 25) {
     return "Red";
   }
-  if(this._temperature > 18) {
+  if(this.temperature > 18) {
     return "Yellow";
   }
   return "Green";

@@ -11,7 +11,7 @@ describe("Feature Test: ", function() {
   describe("Thermostat temperature", function() {
 
     it("starts at 20 degrees", function() {
-      expect(thermostat.currentTemperature()).toBe(20)
+      expect(thermostat._currentTemperature()).toBe(20)
     });
 
     it("increase the temperature with the up button", function() {
@@ -23,11 +23,11 @@ describe("Feature Test: ", function() {
     });
 
     it("has a minimum temperature of 10 degrees", function(){
-      expect(thermostat._minimumTemperature).toBe(10)
+      expect(thermostat.minimumTemperature).toBe(10)
     });
 
     it("cannot exceed minimum temperature", function() {
-      thermostat._temperature = 10;
+      thermostat.temperature = 10;
       expect(function(){thermostat.decreaseTemperature();}).toThrowError("Minimum temperature reached");
     });
 
@@ -36,7 +36,7 @@ describe("Feature Test: ", function() {
     });
 
     it("cannot exceed maximum temperature", function() {
-      thermostat._temperature = 25;
+      thermostat.temperature = 25;
       expect(function(){thermostat.increaseTemperature();}).toThrowError("Maximum temperature reached");
     });
 
@@ -62,7 +62,7 @@ describe("Feature Test: ", function() {
     it("can be reset to 20 degrees with the reset button", function() {
       thermostat.increaseTemperature()
       thermostat.resetTemperature()
-      expect(thermostat.currentTemperature()).toBe(20)
+      expect(thermostat._currentTemperature()).toBe(20)
     });
    });
 
@@ -72,12 +72,12 @@ describe("Feature Test: ", function() {
      });
 
      it("green on low usage", function() {
-       thermostat._temperature = 17;
+       thermostat.temperature = 17;
        expect(thermostat.displayColour()).toBe("Green")
      });
 
      it("red on high usage", function() {
-       thermostat._temperature = 26;
+       thermostat.temperature = 26;
        expect(thermostat.displayColour()).toBe("Red")
      });
 
