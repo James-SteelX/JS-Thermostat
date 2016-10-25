@@ -18,6 +18,9 @@ describe("Feature Test: ", function() {
        expect(thermostat.increaseTemperature()).toBe(21)
      });
 
+     it("decrease the temperature with the down button", function() {
+       expect(thermostat.decreaseTemperature()).toBe(19)
+     });
   });
 
 });
