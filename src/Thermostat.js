@@ -11,10 +11,16 @@ Thermostat.prototype.currentTemperature = function () {
 };
 
 Thermostat.prototype.increaseTemperature = function () {
+  if(this._temperature >= this.maximumTemperature()) {
+    throw new Error("Maximum temperature reached");
+  }
   return this._temperature + 1;
 };
 
 Thermostat.prototype.decreaseTemperature = function () {
+  if(this._temperature <= this._minimumTemperature) {
+    throw new Error("Minimum temperature reached");
+  }
   return this._temperature -1;
 };
 

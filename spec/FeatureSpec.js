@@ -26,8 +26,18 @@ describe("Feature Test: ", function() {
       expect(thermostat._minimumTemperature).toBe(10)
     });
 
+    it("cannot exceed minimum temperature", function() {
+      thermostat._temperature = 10;
+      expect(function(){thermostat.decreaseTemperature();}).toThrowError("Minimum temperature reached");
+    });
+
     it("has a maximum temperature of 25 degrees when powersaving is on", function() {
       expect(thermostat.maximumTemperature()).toBe(25)
+    });
+
+    it("cannot exceed maximum temperature", function() {
+      thermostat._temperature = 25;
+      expect(function(){thermostat.increaseTemperature();}).toThrowError("Maximum temperature reached");
     });
 
     it("Powersaving is set to on by default", function() {
