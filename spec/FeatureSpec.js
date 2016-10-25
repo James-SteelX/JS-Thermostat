@@ -60,7 +60,9 @@ describe("Feature Test: ", function() {
     });
 
     it("can be reset to 20 degrees with the reset button", function() {
-      thermostat.increaseTemperature()
+      for (var i = 0; i < 6; i++) {
+        thermostat.increaseTemperature();
+      }
       thermostat.resetTemperature()
       expect(thermostat._currentTemperature()).toBe(20)
     });
