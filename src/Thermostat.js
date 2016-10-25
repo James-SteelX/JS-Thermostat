@@ -22,4 +22,13 @@ Thermostat.prototype.maximumTemperature = function () {
   if(this._powerSaving === true) {
     return 25;
   }
+  return 32;
+};
+
+Thermostat.prototype.turnOffPowerSaving = function () {
+  this._powerSaving = false;
+};
+
+Thermostat.prototype.turnOnPowerSaving = function () {
+  this._powerSaving = true;
 };
