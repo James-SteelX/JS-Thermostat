@@ -54,6 +54,23 @@ describe("Feature Test: ", function() {
       thermostat.resetTemperature()
       expect(thermostat.currentTemperature()).toBe(20)
     });
-  });
+   });
+
+   describe("Thermostat display colour", function(){
+     it("is Yellow by default", function(){
+       expect(thermostat.displayColour()).toBe('Yellow')
+     });
+
+     it("green on low usage", function() {
+       thermostat._temperature = 17;
+       expect(thermostat.displayColour()).toBe("Green")
+     });
+
+     it("red on high usage", function() {
+       thermostat._temperature = 26;
+       expect(thermostat.displayColour()).toBe("Red")
+     });
+
+   });
 
 });
