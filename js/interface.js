@@ -36,18 +36,9 @@ weather();
   });
 
   function changeColour(){
-    $("#temperature").text(thermostat.temperature);
+    $("#temperature").text(thermostat.temperature + ascii(176) );
     $("#temperature").attr("class", thermostat.colour())
     $("#power-saving-status").attr("class", thermostat.powerSavingMode)
-
-    // if (thermostat.colour() === "lowUsage") {
-    //   $("#temperature").css('background-color','green');
-    // } else if (thermostat.colour() === "mediumUsage") {
-    //   $("#temperature").css('background-color','yellow');
-    // }
-    // else {
-    //   $("#temperature").css('background-color','red');
-    // }
   }
 
    function weather(){
@@ -59,6 +50,5 @@ weather();
     });
    }
 
-// 3aa07a48be658a901acbe6b44ee42e17
-
+   function ascii (a) { return String.fromCharCode(a); }
 });
