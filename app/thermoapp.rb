@@ -1,24 +1,32 @@
 require 'sinatra/base'
-# require 'models/thermostat'
+require './app/models/thermostat'
+require_relative 'data_mapper_setup'
 
 class ThermoApp < Sinatra::Base
 
-  # before do
-  #   @thermo = Thermostat.new
-  # end
+  enable :sessions
+  set :session_secret, 'super secret'
+
+  @thermo = Thermostat.new_therm
 
   get '/' do
      erb:'index'
   end
 
   post '/' do
+    @thermo = Thermostat.new_therm
     erb:'index'
-    # @thermo.update(:temp params[:temp])
-    # @thermo.save
   end
 
   post '/data' do
     erb:'index'
+    puts params[:temp]
+     @thermo = Thermostat.instance
+     @thermo.id = Thermostat.instance.id
+     @thermo.temp = params[:temp]
+     @thermo.city = params[:city]
+     @thermo.psm = params[:psm]
+     @thermo.save
   end
   # run! if app_file == $0
 

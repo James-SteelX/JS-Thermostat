@@ -8,8 +8,6 @@ $( document ).ready(function() {
     $( "#up" ).click(function( event ) {
         thermostat.up();
         updateTemp();
-        var temp = thermostat._current_temperature;
-        $.post("/data", 'hello');
     });
 
     $( "#down" ).click(function( event ) {
@@ -46,6 +44,7 @@ $( document ).ready(function() {
        powerSavingColor();
        $("#current-temp").text(thermostat._current_temperature + ascii(176) + 'C');
        $('#current-temp').attr('class', thermostat.energyUse());
+       $.post( "/data", { temp: thermostat._current_temperature, city: 'London', psm: thermostat._powerSaving } );
      };
 
      function powerSavingColor(){
@@ -68,4 +67,7 @@ $( document ).ready(function() {
       }
 
       function ascii (a) { return String.fromCharCode(a); }
+
+
+      // $.ajax({url: "temperature_change", method: "POST", data: thermostat.temp
 });
