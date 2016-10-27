@@ -19,7 +19,7 @@ weather();
   });
 
   $("#citysub").click(function(event){
-    $('#citytemp').text($('#city').val());
+    $('#citytemp').text($('#city').val() || 'London' );
     weather()
   });
 
