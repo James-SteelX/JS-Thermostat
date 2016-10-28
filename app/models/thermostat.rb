@@ -1,4 +1,6 @@
-require './app/data_mapper_setup'
+require 'data_mapper'
+require 'dm-postgres-adapter'
+require 'dm-migrations'
 
 class Thermostat
 
@@ -6,6 +8,7 @@ class Thermostat
 
     property :id,    Serial
     property :temp,  Integer
-    property :city,  String
+    property :city,  Text
     property :psm,   Boolean
+
 end

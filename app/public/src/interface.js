@@ -1,6 +1,11 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
+
+  thermostat.temperature = gon.temp;
+
   updateTemperature();
+  updateBackground();
+  powerSavingReset();
 
   $('#temperature-up').on('click', function() { // event listener
     thermostat.increaseTemperature(); // update model
@@ -36,6 +41,7 @@ $(document).ready(function() {
 
   function updateTemperature() {
     $('#temperature').text(thermostat.temperature);
+    $.post( "/data", { temp: thermostat.temperature, city: $('#current-city').val(), psm: thermostat.powerSavingModeOn } );
   }
 
   function updateBackground() {
@@ -50,6 +56,20 @@ $(document).ready(function() {
       $('#current-temperature').text(data.main.temp);
     })
   }
+
+  function powerSavingReset() {
+    if (gon.psm === true) {
+        thermostat.turnPowerSavingModeOn();
+        $('#power-saving-status').text('on')
+        updateTemperature();
+        updateBackground();
+     } else {
+        thermostat.turnPowerSavingModeOff();
+        $('#power-saving-status').text('off')
+        updateTemperature();
+        updateBackground();
+   }
+ };
 
   displayWeather('London');
 

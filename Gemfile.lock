@@ -63,6 +63,8 @@ GEM
       data_objects (= 0.10.17)
     extlib (0.9.16)
     fastercsv (1.5.5)
+    gon-sinatra (0.1.2)
+      sinatra
     highline (1.7.8)
     json (1.8.3)
     json_pure (1.8.3)
@@ -114,9 +116,13 @@ DEPENDENCIES
   capybara
   data_mapper
   dm-postgres-adapter
+  gon-sinatra
   rspec
   rspec-sinatra
   sinatra
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.11.2
+   1.13.5

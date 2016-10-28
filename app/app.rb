@@ -1,13 +1,29 @@
 require 'sinatra/base'
-require 'sinatra'
-require_relative './models/thermostat'
+require './app/models/thermostat'
+require_relative 'data_mapper_setup.rb'
+require 'json'
+require 'gon-sinatra'
 
 ENV['RACK_ENV'] = 'development'
 
 class ThermostatApp < Sinatra::Base
 
+  register Gon::Sinatra
+
   get '/' do
+    @user = Thermostat.first_or_create
+    gon.temp = @user.temp
+    puts @user.city
+    gon.psm = @user.psm
     erb :index
+  end
+
+  post '/data' do
+    @user = Thermostat.first
+    @user.temp = params[:temp]
+    @user.city = params[:city]
+    @user.psm = params[:psm]
+    @user.save
   end
 
 end
