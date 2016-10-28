@@ -12,8 +12,9 @@ class ThermostatApp < Sinatra::Base
 
   get '/' do
     @user = Thermostat.first_or_create
-    gon.temp = @user.temp
     puts @user.city
+    gon.temp = @user.temp
+    gon.currentcity = @user.city
     gon.psm = @user.psm
     erb :index
   end
@@ -23,6 +24,7 @@ class ThermostatApp < Sinatra::Base
     @user.temp = params[:temp]
     @user.city = params[:city]
     @user.psm = params[:psm]
+    # puts @user.city
     @user.save
   end
 

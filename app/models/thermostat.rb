@@ -8,7 +8,7 @@ class Thermostat
 
     property :id,    Serial
     property :temp,  Integer
-    property :city,  Text
+    property :city,  String
     property :psm,   Boolean
 
 end
