@@ -2,6 +2,7 @@ $(document).ready(function() {
   var thermostat = new Thermostat();
   thermostat.temperature = gon.temp;
 
+
   updateTemperature();
   updateBackground();
   powerSavingReset();
